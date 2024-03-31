@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name required'],
     match: [/^[A-Za-zÀ-ÖØ-öø-ÿ'-]+$/, `Invalid name`],
-
   },
   email: {
     type: String,
@@ -19,7 +18,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
-    // this is essential
+    // this is essential, so that passwords are not returned with every DB query
     select: false,
   },
   createdAt: {
