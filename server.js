@@ -12,6 +12,7 @@ const requestLogger = require('./middleware/request_logger.js');
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
+app.use(express.static('public'));
 
 connectDB();
 

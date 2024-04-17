@@ -1,7 +1,10 @@
 const ErrorResponse = require('../utils/errorResponse');
 
 const errorHandler = (err, req, res, next) => {
-  console.log('in the error handler');
+  console.log('in the error handler, here is the error object');
+  console.log(err.message)
+
+
   let message = err.message;
   let registrationError = {
     registration: {
@@ -46,7 +49,7 @@ const errorHandler = (err, req, res, next) => {
 
   res.status(error.statusCode || 500).json({
     success: false,
-    message: error.message || 'Server Error',
+    message: err.message || 'Server Error',
     registration: error.details.registration,
   });
 };
