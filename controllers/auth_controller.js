@@ -22,12 +22,16 @@ exports.register = async (req, res, next) => {
   if (!confirm) registrationError.confirm = 'Required';
   if (!name) registrationError.name = 'Required';
   if (!email || !password || !confirm || !name) {
-    return next(new ErrorResponse('All fields are required', 400, registrationError));
+    return next(
+      new ErrorResponse('All fields are required', 400, registrationError)
+    );
   }
 
   if (password !== confirm) {
     registrationError.confirm = 'Passwords must match';
-    return next(new ErrorResponse('Passwords must match', 400, registrationError));
+    return next(
+      new ErrorResponse('Passwords must match', 400, registrationError)
+    );
   }
 
   try {
@@ -80,8 +84,10 @@ exports.login = async (req, res, next) => {
 };
 
 exports.forgot = async (req, res, next) => {
-  res.status(200).json({ message: 'Contact mitchgruen.dev@gmail.com for assisstance.' });
-}
+  res
+    .status(200)
+    .json({ message: 'Contact mitchgruen.dev@gmail.com for assisstance.' });
+};
 
 // Get token from model, create cookie, send response
 const sendTokenResponse = (user, statusCode, res) => {

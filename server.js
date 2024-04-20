@@ -7,6 +7,7 @@ require('dotenv').config();
 const connectDB = require('./config/db.js');
 const colors = require('colors');
 const { register, login, forgot } = require('./controllers/auth_controller.js');
+const { sort } = require('./controllers/sort_controller.js')
 const requestLogger = require('./middleware/request_logger.js');
 
 app.use(cors());
@@ -23,6 +24,7 @@ app.get('/test', (req, res) => res.send('test'));
 app.post('/auth/register', register);
 app.post('/auth/login', login);
 app.post('/auth/forgot', forgot);
+app.post('/sort', sort)
 app.use(errorHandler);
 
 const server = app.listen(port, () =>
