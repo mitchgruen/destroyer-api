@@ -77,7 +77,6 @@ exports.sort = async (req, res, next) => {
     'Do not add any intro message, e.g. Here is the new state tree with consolidated notes and updated layout coordinates: ' +
     'When you are making a list and using dashses as bullets, do not put a space after the dash. ' +
     'Also I want you to generate new uuids in the same format that they are given to you. ' +
-    'Also, give any new notes a new timestamp based on the current date and time' +
     JSON.stringify(req.body.notes);
 
   try {
